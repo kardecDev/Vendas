@@ -22,6 +22,13 @@ namespace Vendas.Domain.Common.Validations
             }
         }
 
+        public static void AgainstNullOrWhiteSpace(string value, string paramName)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new DomainException($"{paramName} não pode ser nulo ou vazio.");
+            }
+        }
         public static void Against<TException>(bool condition, string message) where TException : Exception
         {
             if (condition)
