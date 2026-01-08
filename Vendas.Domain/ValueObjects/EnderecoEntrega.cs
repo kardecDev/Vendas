@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Vendas.Domain.Common.Base;
+using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Common.Validations;
 
 namespace Vendas.Domain.ValueObjects;
@@ -29,10 +27,10 @@ public class EnderecoEntrega : ValueObject
 
         //Validação de formato para CEP pode ser adicionada aqui
         //Exemplo: Guard.AgainstInvalidCepFormat(cep, nameof(cep));
-        if(!Regex.IsMatch(cep, @"^\d{5}-\d{3}$"))
-           throw new ArgumentException("Formato de CEP inválido. O formato correto é 00000-000.", nameof(cep));
+        if(!Regex.IsMatch(cep ?? "", @"^\d{5}-\d{3}$"))
+           throw new DomainException("Formato de CEP inválido. O formato correto é 00000-000.");
 
-        Cep = cep;
+        Cep = cep!;
         Logradouro = logradouro;
         Complemento = complemento ?? string.Empty; // Complemento é opcional
         Bairro = bairro;
@@ -56,7 +54,7 @@ public class EnderecoEntrega : ValueObject
         yield return Cidade;
         yield return Pais;
     }
-    public string FormatarCompleto()
+    public string FormatarEndereco()
     {
         return $"{Logradouro}, {Complemento} - {Bairro}, {Cidade} - {Estado}, {Pais} - CEP: {Cep}";
     }

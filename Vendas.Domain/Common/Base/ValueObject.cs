@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vendas.Domain.Common.Base
+﻿namespace Vendas.Domain.Common.Base
 {
     public abstract class ValueObject
     {
@@ -13,7 +9,7 @@ namespace Vendas.Domain.Common.Base
                 return false;
 
             var other = (ValueObject)obj;
-            
+
             return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
         }
 
@@ -23,6 +19,18 @@ namespace Vendas.Domain.Common.Base
                 .Select(x => x != null ? x.GetHashCode() : 0)
                 .Aggregate((x, y) => x ^ y);
         }
+
+        public static bool operator ==(ValueObject? a, ValueObject? b)
+        {
+            return a?.Equals(b) ?? b is null;
+        }
+
+
+        public static bool operator !=(ValueObject? a, ValueObject? b)
+        {
+            return !(a== b);
+        }
+        
 
     }
 }

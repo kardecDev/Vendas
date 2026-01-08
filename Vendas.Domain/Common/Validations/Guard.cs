@@ -7,7 +7,7 @@ namespace Vendas.Domain.Common.Validations
 {
     internal static class Guard
     {
-        public static void AgainstGuid(Guid id, string paramName)
+        public static void AgainstEmptyGuid(Guid id, string paramName)
         {
             if (id == Guid.Empty)
             {
