@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Vendas.Domain.Common.Exceptions;
+﻿using Vendas.Domain.Common.Exceptions;
 
 namespace Vendas.Domain.Common.Validations
 {

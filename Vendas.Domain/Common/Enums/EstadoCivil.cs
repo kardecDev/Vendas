@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vendas.Domain.Common.Enums
+﻿namespace Vendas.Domain.Common.Enums
 {
     public enum EstadoCivil
     {

@@ -15,7 +15,7 @@ namespace Vendas.Domain.Entities
         public decimal ValorTotal { get; private set; }
 
         //Construtor
-        internal ItemPedido(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade, decimal descontoAplicado)
+        internal ItemPedido(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade, decimal descontoAplicado=0m)
         {
             Guard.AgainstEmptyGuid(produtoId, nameof(produtoId));
             Guard.AgainstNullOrWhiteSpace(nomeProduto, nameof(nomeProduto));
@@ -69,8 +69,7 @@ namespace Vendas.Domain.Entities
         //Método para calcular o valor total do item do pedido
         private void CalcularValorTotal()
         {
-            var valorBruto = (PrecoUnitario * Quantidade) ;
-            ValorTotal = valorBruto - DescontoAplicado;
+            ValorTotal = (PrecoUnitario * Quantidade) - DescontoAplicado;
         }
 
     }

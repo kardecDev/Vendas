@@ -2,7 +2,6 @@
 using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.ValueObjects;
 
-
 namespace Vendas.Domain.Tests.ValueObjects
 {
     public class EnderecoEntregaTests

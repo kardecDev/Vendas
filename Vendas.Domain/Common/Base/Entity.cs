@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vendas.Domain.Common.Base
+﻿namespace Vendas.Domain.Common.Base
 {
     public abstract class Entity
     {
